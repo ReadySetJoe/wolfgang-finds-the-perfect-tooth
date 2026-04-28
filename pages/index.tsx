@@ -2,6 +2,7 @@ import Head from "next/head";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Details from "@/components/Details";
+import CastCrew from "@/components/CastCrew";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <Hero />
         <About />
         <Details />
+        <CastCrew />
       </main>
     </>
   );
