@@ -1,8 +1,11 @@
 import Ornament from "./Ornament";
+import { useScrollReveal } from "./useScrollReveal";
 
 export default function About() {
+  const ref = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="bg-bg-mid py-20 px-6">
+    <section ref={ref} className="animate-on-scroll bg-bg-mid py-20 px-6">
       <Ornament />
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="font-heading text-3xl text-gold tracking-wider uppercase mb-8">

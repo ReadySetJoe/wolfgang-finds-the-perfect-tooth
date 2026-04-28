@@ -1,4 +1,5 @@
 import Ornament from "./Ornament";
+import { useScrollReveal } from "./useScrollReveal";
 
 const cast = [
   { name: "Cast Member One", role: "Wolfgang" },
@@ -38,8 +39,10 @@ function PersonList({
 }
 
 export default function CastCrew() {
+  const ref = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="bg-bg-mid py-20 px-6">
+    <section ref={ref} className="animate-on-scroll bg-bg-mid py-20 px-6">
       <Ornament />
       <div className="mx-auto max-w-3xl">
         <h2 className="font-heading text-3xl text-gold tracking-wider uppercase mb-12 text-center">

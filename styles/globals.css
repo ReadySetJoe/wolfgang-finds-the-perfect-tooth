@@ -45,3 +45,11 @@ body {
 .animate-fade-in-up {
   animation: fade-in-up 0.8s ease-out both;
 }
+
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.is-visible {
+  animation: fade-in-up 0.8s ease-out both;
+}

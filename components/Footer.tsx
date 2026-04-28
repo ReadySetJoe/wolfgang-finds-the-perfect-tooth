@@ -1,9 +1,12 @@
 import Ornament from "./Ornament";
 import TicketButton from "./TicketButton";
+import { useScrollReveal } from "./useScrollReveal";
 
 export default function Footer() {
+  const ref = useScrollReveal<HTMLElement>();
+
   return (
-    <footer className="bg-[#050000] py-20 px-6">
+    <footer ref={ref} className="animate-on-scroll bg-[#050000] py-20 px-6">
       <Ornament />
       <div className="mx-auto max-w-xl text-center">
         {/* Final CTA */}
