@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg-dark: #0a0000;
+  --color-bg-mid: #1a0000;
+  --color-bg-light: #2a0000;
+  --color-text-primary: #f5e6c8;
+  --color-text-muted: #996633;
+  --color-gold: #CC9900;
+  --color-red-deep: #8B0000;
+  --color-red-bright: #CC0000;
+  --color-red-soft: #ff8888;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg-dark: var(--color-bg-dark);
+  --color-bg-mid: var(--color-bg-mid);
+  --color-bg-light: var(--color-bg-light);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-muted: var(--color-text-muted);
+  --color-gold: var(--color-gold);
+  --color-red-deep: var(--color-red-deep);
+  --color-red-bright: var(--color-red-bright);
+  --color-red-soft: var(--color-red-soft);
+  --font-heading: var(--font-cinzel);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg-dark);
+  color: var(--color-text-primary);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out both;
 }
