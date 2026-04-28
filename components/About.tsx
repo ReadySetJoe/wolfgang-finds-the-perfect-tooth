@@ -13,25 +13,28 @@ export default function About() {
         </h2>
         <div className="space-y-6 text-base leading-relaxed text-text-primary/90">
           <p>
-            A routine dental procedure goes sideways when a dentist discovers a
-            mythical wish-granting tooth inside the mouth of his most
-            unremarkable patient. But he&rsquo;s not the only one who wants
-            it&mdash;a vengeful wolfman and a rhyme-obsessed colonel have been
-            waiting in the lobby, and they&rsquo;re not here for a cleaning.
+            A routine dental procedure goes sideways when the Dentist discovers
+            a mythical wish-granting tooth inside the mouth of his most
+            unremarkable Patient. But he&rsquo;s not the only one who wants it.
+            A vengeful Wolfman and a rhyme-obsessed Colonel wait in the lobby,
+            and they&rsquo;re not here for a cleaning.
           </p>
           <p>
-            What follows is a grenade explosion, a one-way trip to Hell, a
+            What follows is a grenade explosion, a journey through Hell, a
             musical duel with a demon, a trial before a jury of audience
-            members, and a love story between a dentist and an ancient
-            hag&mdash;all set to original songs that have no business being this
-            catchy.
+            members, and a love story between a Dentist and an ancient Hag. All
+            set to original songs that are sure to have you asking,
+            &quot;What?&quot;.
           </p>
           <p>
-            <em>Wolfgang Finds the Perfect Tooth</em> is a live-band musical
-            about revenge, redemption, rocket launchers, and the lengths
-            we&rsquo;ll go to for the people we love&mdash;even if those people
-            are supernatural beings who haunt children and the elderly. Bring
-            eyeliner. Leave your expectations at the door.
+            <em>Wolfgang Finds the Perfect Tooth </em>is a live-band musical
+            about revenge, redemption, and the lengths we&rsquo;ll go to for the
+            people we love. Even if those people are supernatural beings who
+            haunt children and the elderly.
+          </p>
+          <p>
+            Leave your expectations at the door. As well as any dental
+            instruments. Please.
           </p>
         </div>
       </div>

@@ -9,8 +9,8 @@ export default function Hero() {
       {/* Top ornamental line */}
       <div className="relative flex items-center gap-4 mb-8">
         <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold" />
-        <span className="text-gold text-[10px] tracking-[0.4em] uppercase">
-          A Descent in Three Acts
+        <span className="text-gold text-[10px] tracking-[0.4em] uppercase text-center">
+          From Bagelbob Productions
         </span>
         <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold" />
       </div>
