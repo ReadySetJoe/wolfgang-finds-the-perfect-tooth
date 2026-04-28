@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Details from "@/components/Details";
 import CastCrew from "@/components/CastCrew";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <About />
         <Details />
         <CastCrew />
+        <Footer />
       </main>
     </>
   );
