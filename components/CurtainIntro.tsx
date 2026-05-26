@@ -14,6 +14,22 @@ export default function CurtainIntro() {
     return () => cancelAnimationFrame(raf);
   }, []);
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    // Under reduced motion there's no animation, so there's nothing to
+    // scroll-lock around. Leave the body as-is.
+    if (prefersReducedMotion) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
+
   if (isDone) return null;
 
   return (
