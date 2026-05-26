@@ -1,4 +1,5 @@
 import Head from "next/head";
+import CurtainIntro from "@/components/CurtainIntro";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Details from "@/components/Details";
@@ -12,6 +13,7 @@ export default function Home() {
         <title>Wolfgang Finds the Perfect Tooth</title>
       </Head>
       <main>
+        <CurtainIntro />
         <Hero />
         <About />
         <Details />
