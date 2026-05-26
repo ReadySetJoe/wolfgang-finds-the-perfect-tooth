@@ -42,7 +42,7 @@ Each panel is built in CSS only — no images, no SVG, no canvas:
 - **Duration:** 1500ms.
 - **Easing:** `cubic-bezier(0.7, 0, 0.3, 1)` — a heavy, weighted ease that starts slow, accelerates, and settles. Not linear, not the default ease, both of which feel like sliding doors rather than fabric mass.
 - **Cleanup:** a `transitionend` listener on one of the panels flips a `done` state in React, which unmounts the component. No `setTimeout` for cleanup — we listen to the real transition end so it cannot desync from the animation.
-- **Scroll lock:** while the curtain is animating, `<body>` gets `overflow: hidden` to prevent scrolling past the hero before the reveal completes. The lock is released in the same cleanup step that unmounts the component.
+- **Scroll lock:** while the curtain is animating, `<body>` gets `overflow: hidden` to prevent scrolling past the hero before the reveal completes. The lock is held by a `useEffect` keyed on the `isDone` flag; when `transitionend` flips `isDone` to `true`, the effect re-runs, its prior cleanup fires (restoring `overflow`), and the new run early-returns. The component then renders `null` on the next pass. Note: returning `null` from a component does not by itself trigger effect cleanup — only a parent unmount or a deps change does — so the lock release must be driven by the `isDone` dependency, not by the `null` return.
 - **Reduced motion:** under `@media (prefers-reduced-motion: reduce)`, the panel CSS sets `display: none`, so the browser hides the curtain at first paint — no flash, no animation. The body scroll-lock effect also checks `matchMedia('(prefers-reduced-motion: reduce)').matches` and skips applying the lock when true. The page appears as-is.
 
 ## File layout
