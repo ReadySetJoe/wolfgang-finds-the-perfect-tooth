@@ -15,12 +15,17 @@ export default function CurtainIntro() {
   }, []);
 
   useEffect(() => {
+    // Once the curtain has finished, don't lock scroll anymore.
+    // Depending on `isDone` (rather than running once with []) is what
+    // releases the lock: when isDone flips true, this effect re-runs,
+    // its previous cleanup fires (restoring overflow), and the new
+    // run returns early. Returning null from the component does NOT
+    // trigger effect cleanup on its own.
+    if (isDone) return;
+
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-
-    // Under reduced motion there's no animation, so there's nothing to
-    // scroll-lock around. Leave the body as-is.
     if (prefersReducedMotion) return;
 
     const previousOverflow = document.body.style.overflow;
@@ -28,7 +33,7 @@ export default function CurtainIntro() {
     return () => {
       document.body.style.overflow = previousOverflow;
     };
-  }, []);
+  }, [isDone]);
 
   if (isDone) return null;
 
