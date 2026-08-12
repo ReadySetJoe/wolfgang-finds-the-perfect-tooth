@@ -6,7 +6,7 @@ export default function SplashPage() {
   return (
     <>
       <Head>
-        <title>Wolfgang Finds the Perfect Tooth &mdash; Info</title>
+        <title>Wolfgang Finds the Perfect Tooth</title>
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
