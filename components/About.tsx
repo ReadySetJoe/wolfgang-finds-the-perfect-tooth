@@ -16,14 +16,15 @@ export default function About() {
             A routine dental procedure goes sideways when the Dentist discovers
             a mythical wish-granting tooth inside the mouth of his most
             unremarkable Patient. But he&rsquo;s not the only one who wants it.
-            A vengeful Wolfman and a rhyme-obsessed Colonel wait in the lobby,
-            and they&rsquo;re not here for a cleaning.
+            A vengeful Wolfman is already waiting in the lobby, and
+            he&rsquo;s not here for a cleaning.
           </p>
           <p>
             What follows is a grenade explosion, a journey through Hell, a
             musical duel with a demon, a trial before a jury of audience
-            members, and a love story between a Dentist and an ancient Hag. All
-            set to original songs that are sure to have you asking,
+            members, a love story between a Dentist and an ancient Hag, and a
+            reunion neither the Wolfman nor the Hygienist saw coming. All set
+            to original songs that are sure to have you asking,
             &quot;What?&quot;.
           </p>
           <p>

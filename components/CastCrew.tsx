@@ -16,13 +16,14 @@ const characters = [
   {
     name: "Wolfman",
     actor: "TBD",
-    description: "A vengeful creature with a bone to pick and a love for chaos",
+    description:
+      "A vengeful creature seeking revenge for the destruction of the moon and his kind",
   },
   {
-    name: "The Colonel",
+    name: "The Hygienist",
     actor: "TBD",
     description:
-      "An eccentric military man seeking redemption, who only speaks in rhymes",
+      "Warm, capable, and quietly fierce — with a past that's about to catch up with her",
   },
   {
     name: "The Hag",
@@ -33,11 +34,6 @@ const characters = [
     name: "The Receptionist",
     actor: "TBD",
     description: "A no-nonsense clerical worker from Shreveport, Louisiana",
-  },
-  {
-    name: "The Hygienist",
-    actor: "TBD",
-    description: "The Dentist's lovestruck assistant caught in the crossfire",
   },
   {
     name: "The Demon",
