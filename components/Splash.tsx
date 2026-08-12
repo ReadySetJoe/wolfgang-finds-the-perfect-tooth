@@ -36,8 +36,8 @@ export default function Splash() {
 
       {/* One-line premise */}
       <p className="mt-5 max-w-md text-sm text-text-primary/80 leading-relaxed">
-        A dentist unearths a wish-granting tooth &mdash; and he&rsquo;s not
-        the only one who wants it.
+        A dentist unearths a wish-granting tooth &mdash; and he&rsquo;s not the
+        only one who wants it.
       </p>
 
       <div className="my-8 w-full max-w-xs">
@@ -61,7 +61,7 @@ export default function Splash() {
           href="/"
           className="inline-block border border-text-muted text-text-primary px-9 py-3 text-xs tracking-[0.25em] uppercase font-heading transition-colors duration-300 hover:border-gold hover:text-gold"
         >
-          Full Site
+          Learn More
         </Link>
       </div>
     </section>

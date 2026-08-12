@@ -15,36 +15,26 @@ const characters = [
   },
   {
     name: "Wolfman",
-    actor: "TBD",
+    actor: "Simon Crowe",
     description:
       "A vengeful creature seeking revenge for the destruction of the moon and his kind",
   },
   {
     name: "The Hygienist",
-    actor: "TBD",
+    actor: "Laura Connell",
     description:
       "Warm, capable, and quietly fierce — with a past that's about to catch up with her",
   },
   {
     name: "The Hag",
-    actor: "TBD",
+    actor: "Amanda Neal",
     description: "An ancient, wish-granting being of terrible power",
   },
   {
-    name: "The Receptionist",
-    actor: "TBD",
-    description: "A no-nonsense clerical worker from Shreveport, Louisiana",
-  },
-  {
-    name: "The Demon",
-    actor: "TBD",
-    description: "Hell's resident musical duelist and potent grudge holder",
-  },
-  {
-    name: "The Judge",
-    actor: "TBD",
+    name: "The Demon/The Judge of Hell",
+    actor: "Jake Williams",
     description:
-      "A mountainous demon presiding over the trial of the Patient's soul",
+      "Hell's resident musical duelist and potent grudge holder. Also a judge.",
   },
   {
     name: "The Jury",
@@ -55,7 +45,7 @@ const characters = [
 
 const crew = [
   { name: "Matthew C. Wallace", role: "Script, Music & Lyrics" },
-  { name: "Joseph Powers", role: "Editor" },
+  { name: "Joe Powers", role: "Helped Out I Guess" },
   { name: "Wolfgang Wallace", role: "Live Band" },
 ];
 
