@@ -1,8 +1,22 @@
 import Head from "next/head";
+import type { GetServerSideProps } from "next";
 import Tickets from "@/components/Tickets";
 import { SITE_URL, OG_IMAGE_URL } from "@/lib/site";
+import { TICKET_CAPACITY, getTicketsSoldCount } from "@/lib/tickets";
 
-export default function TicketsPage() {
+interface TicketsPageProps {
+  remaining: number;
+}
+
+export const getServerSideProps: GetServerSideProps<TicketsPageProps> =
+  async () => {
+    const sold = await getTicketsSoldCount();
+    const remaining = Math.max(0, TICKET_CAPACITY - sold);
+
+    return { props: { remaining } };
+  };
+
+export default function TicketsPage({ remaining }: TicketsPageProps) {
   return (
     <>
       <Head>
@@ -32,7 +46,7 @@ export default function TicketsPage() {
         <meta name="twitter:image" content={OG_IMAGE_URL} />
       </Head>
       <main>
-        <Tickets />
+        <Tickets remaining={remaining} />
       </main>
     </>
   );

@@ -1,7 +1,47 @@
+import { useState } from "react";
 import Ornament from "./Ornament";
-import { TICKETS_PAYMENT_LINK_URL } from "@/lib/site";
+import { MAX_QUANTITY_PER_ORDER } from "@/lib/tickets";
 
-export default function Tickets() {
+interface TicketsProps {
+  remaining: number;
+}
+
+export default function Tickets({ remaining }: TicketsProps) {
+  const maxQuantity = Math.min(remaining, MAX_QUANTITY_PER_ORDER);
+  const [quantity, setQuantity] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleBuy() {
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ quantity }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        setError(
+          data.error === "sold_out"
+            ? "Sorry, we just sold out."
+            : "Something went wrong. Please try again."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
+      const { url } = await response.json();
+      window.location.href = url;
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <section className="animate-fade-in-up min-h-screen bg-gradient-to-b from-bg-dark via-bg-light to-bg-dark py-24 px-6">
       <div className="mx-auto max-w-xl text-center">
@@ -52,12 +92,47 @@ export default function Tickets() {
 
         <Ornament />
 
-        <a
-          href={TICKETS_PAYMENT_LINK_URL}
-          className="inline-block border border-gold text-gold px-9 py-3 text-xs tracking-[0.25em] uppercase font-heading transition-colors duration-300 hover:bg-gold hover:text-bg-dark"
-        >
-          Buy Tickets
-        </a>
+        {remaining <= 0 ? (
+          <p className="font-heading text-lg text-red-soft uppercase tracking-wider">
+            Sold Out
+          </p>
+        ) : (
+          <>
+            <div className="mb-6 flex items-center justify-center gap-3">
+              <label
+                htmlFor="quantity"
+                className="text-xs text-gold tracking-[0.3em] uppercase"
+              >
+                Quantity
+              </label>
+              <select
+                id="quantity"
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
+                className="bg-bg-dark border border-gold text-text-primary px-3 py-2"
+              >
+                {Array.from({ length: maxQuantity }, (_, i) => i + 1).map(
+                  (n) => (
+                    <option key={n} value={n}>
+                      {n}
+                    </option>
+                  )
+                )}
+              </select>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleBuy}
+              disabled={isSubmitting}
+              className="inline-block border border-gold text-gold px-9 py-3 text-xs tracking-[0.25em] uppercase font-heading transition-colors duration-300 hover:bg-gold hover:text-bg-dark disabled:opacity-50"
+            >
+              {isSubmitting ? "Redirecting..." : "Buy Tickets"}
+            </button>
+
+            {error && <p className="text-sm text-red-soft mt-4">{error}</p>}
+          </>
+        )}
 
         <p className="text-xs text-text-muted mt-6">
           You&apos;ll complete your purchase securely via Stripe, then return
