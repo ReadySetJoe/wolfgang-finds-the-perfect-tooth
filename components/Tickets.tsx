@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Ornament from "./Ornament";
-import { MAX_QUANTITY_PER_ORDER } from "@/lib/tickets";
+import { MAX_QUANTITY_PER_ORDER } from "@/lib/tickets-config";
 
 interface TicketsProps {
   remaining: number;

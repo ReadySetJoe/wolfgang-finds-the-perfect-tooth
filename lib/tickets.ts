@@ -1,10 +1,17 @@
 import { stripe } from "./stripe";
+import {
+  TICKET_UNIT_PRICE_CENTS,
+  TICKET_METADATA_KEY,
+  TICKET_METADATA_VALUE,
+} from "./tickets-config";
 
-export const TICKET_CAPACITY = 250;
-export const TICKET_UNIT_PRICE_CENTS = 2500;
-export const MAX_QUANTITY_PER_ORDER = 8;
-export const TICKET_METADATA_KEY = "ticket_type";
-export const TICKET_METADATA_VALUE = "wolfgang-ga";
+export {
+  TICKET_CAPACITY,
+  TICKET_UNIT_PRICE_CENTS,
+  MAX_QUANTITY_PER_ORDER,
+  TICKET_METADATA_KEY,
+  TICKET_METADATA_VALUE,
+} from "./tickets-config";
 
 export async function getTicketsSoldCount(): Promise<number> {
   try {
