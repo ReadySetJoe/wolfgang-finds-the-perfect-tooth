@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AddToCalendarButton from "./AddToCalendarButton";
 import Ornament from "./Ornament";
 
 export default function TicketsThankYou() {
@@ -16,6 +17,9 @@ export default function TicketsThankYou() {
           We&apos;ll see you October 17, 2026 at Centre Stage. Hell awaits.
         </p>
         <Ornament />
+        <div className="mb-8">
+          <AddToCalendarButton />
+        </div>
         <Link
           href="/"
           className="inline-block border border-gold text-gold px-9 py-3 text-xs tracking-[0.25em] uppercase font-heading transition-colors duration-300 hover:bg-gold hover:text-bg-dark"

@@ -1,3 +1,4 @@
+import AddToCalendarButton from "./AddToCalendarButton";
 import Ornament from "./Ornament";
 import TicketButton from "./TicketButton";
 import { useScrollReveal } from "./useScrollReveal";
@@ -32,6 +33,9 @@ export default function Details() {
             <p className="text-lg text-text-primary">Centre Stage</p>
             <p className="text-sm text-text-muted mt-1">Greenville, SC</p>
           </div>
+        </div>
+        <div className="mb-8">
+          <AddToCalendarButton />
         </div>
         <TicketButton />
       </div>
