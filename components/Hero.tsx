@@ -53,13 +53,6 @@ export default function Hero() {
         <div className="text-[#4a0000] text-base">&#10013;</div>
         <div className="h-px w-10 bg-gradient-to-l from-transparent to-[#4a0000]" />
       </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 animate-bounce">
-        <div className="h-6 w-4 rounded-full border border-gold/30 flex items-start justify-center pt-1">
-          <div className="h-1.5 w-0.5 rounded-full bg-gold/50" />
-        </div>
-      </div>
     </section>
   );
 }
