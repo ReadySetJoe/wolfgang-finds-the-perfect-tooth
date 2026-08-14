@@ -28,7 +28,7 @@
 **Interfaces:**
 - Produces: `sanitizeSource(raw: string): string`, `captureSource(): void`, `getSource(): string` — all exported from `lib/attribution.ts`. Task 2 consumes `captureSource`. Task 3 consumes `getSource`.
 
-- [ ] **Step 1: Create `lib/attribution.ts`**
+- [x] **Step 1: Create `lib/attribution.ts`**
 
 ```ts
 const STORAGE_KEY = "wftpt_ticket_source";
@@ -55,12 +55,12 @@ export function getSource(): string {
 }
 ```
 
-- [ ] **Step 2: Verify the file compiles**
+- [x] **Step 2: Verify the file compiles**
 
 Run: `npx tsc --noEmit`
 Expected: no errors.
 
-- [ ] **Step 3: Manually sanity-check the sanitizer**
+- [x] **Step 3: Manually sanity-check the sanitizer**
 
 Run: `node -e "
 const s = (raw) => raw.replace(/[^A-Za-z0-9_-]/g, '').slice(0, 200);
@@ -76,7 +76,7 @@ scriptalert1script
 ```
 This confirms the same regex/truncate logic used in `sanitizeSource` strips unsafe characters and enforces the 200-character limit.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add lib/attribution.ts
@@ -94,7 +94,7 @@ git commit -m "feat(tickets): add source attribution capture/read utility"
 - Consumes: `captureSource` from `lib/attribution.ts` (Task 1).
 - Produces: nothing new consumed by later tasks — this task only causes `captureSource()` to run as a side effect on mount and on every route change.
 
-- [ ] **Step 1: Wire `captureSource()` into `_app.tsx`**
+- [x] **Step 1: Wire `captureSource()` into `_app.tsx`**
 
 Replace the full contents of `pages/_app.tsx`:
 
@@ -128,12 +128,12 @@ export default function App({ Component, pageProps }: AppProps) {
 
 Depending on `router.asPath` (rather than an empty dependency array) means `captureSource()` re-runs if someone follows an internal link with a `?src=` param during client-side navigation, not just on the initial full page load.
 
-- [ ] **Step 2: Verify the file compiles**
+- [x] **Step 2: Verify the file compiles**
 
 Run: `npx tsc --noEmit`
 Expected: no errors.
 
-- [ ] **Step 3: Manually verify capture in the browser**
+- [x] **Step 3: Manually verify capture in the browser**
 
 Run: `npm run dev`, then in a browser:
 1. Visit `http://localhost:3000/?src=ig-story-oct12`.
@@ -144,7 +144,7 @@ Run: `npm run dev`, then in a browser:
 4. Visit `http://localhost:3000/` with no `src` param.
    Expected: `localStorage.getItem("wftpt_ticket_source")` still returns `"scriptbad"` (unchanged) — visiting without a `src` param must not clear a previously captured value.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add pages/_app.tsx
@@ -162,7 +162,7 @@ git commit -m "feat(tickets): capture ticket source from URL on every page load"
 - Consumes: `getSource` from `lib/attribution.ts` (Task 1), `TICKETS_PAYMENT_LINK_URL` from `lib/site.ts` (existing).
 - Produces: nothing consumed by later tasks — this is the last code task.
 
-- [ ] **Step 1: Update `components/Tickets.tsx` to build the Buy Tickets link dynamically**
+- [x] **Step 1: Update `components/Tickets.tsx` to build the Buy Tickets link dynamically**
 
 Replace the full contents of `components/Tickets.tsx`:
 
@@ -250,12 +250,14 @@ export default function Tickets() {
 
 The `source` state starts at `"direct"` so server-rendered HTML always has a valid `client_reference_id`; the `useEffect` swaps in the real stored value after hydration if one exists.
 
-- [ ] **Step 2: Build and verify the fallback appears in static HTML**
+> **Deviation from plan:** during implementation, manual browser testing found that visiting `/tickets?src=...` directly (no homepage hop) failed to capture the source, because `pages/_app.tsx`'s capture effect (parent) and this component's read effect (child) both fire on the same initial mount, and React fires child effects before parent effects — so the read happened before the write. Fixed by having this component call `captureSource()` (via the new `resolveSource()` helper in `lib/attribution.ts`) itself, making it self-sufficient regardless of `_app`'s effect timing. See commit history for the exact diff.
+
+- [x] **Step 2: Build and verify the fallback appears in static HTML**
 
 Run: `npm run build && grep -o 'client_reference_id=direct' .next/server/pages/tickets.html`
 Expected: outputs `client_reference_id=direct` (the server-rendered fallback, before any client-side `localStorage` read happens).
 
-- [ ] **Step 3: Manually verify the link updates after hydration**
+- [x] **Step 3: Manually verify the link updates after hydration**
 
 Run: `npm run dev`, then in a browser:
 1. Visit `http://localhost:3000/?src=ig-story-oct12` to capture a source (per Task 2).
@@ -266,7 +268,7 @@ Run: `npm run dev`, then in a browser:
 5. In the same fresh private/incognito window, visit `http://localhost:3000/tickets?src=qr-flyer-lobby` directly — no homepage hop first.
    Expected: the "Buy Tickets" link's `href` ends in `?client_reference_id=qr-flyer-lobby`, confirming capture works on `/tickets` itself as an entry point, not just via the homepage.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add components/Tickets.tsx
@@ -281,19 +283,19 @@ This task is manual verification, not code — but it's required to confirm the 
 
 **Files:** none.
 
-- [ ] **Step 1: Complete a tracked test-mode purchase**
+- [x] **Step 1: Complete a tracked test-mode purchase**
 
 With `npm run dev` running (the current `TICKETS_PAYMENT_LINK_URL` in `lib/site.ts` is already a Stripe test-mode link per the existing `test(tickets): wire in Stripe test-mode payment link for QA` commit):
 1. Visit `http://localhost:3000/?src=ig-story-oct12`.
 2. Navigate to `/tickets` and click "Buy Tickets".
 3. Complete checkout using Stripe's test card `4242 4242 4242 4242`, any future expiry, any CVC, and a test name.
 
-- [ ] **Step 2: Confirm the source appears in the Stripe Dashboard**
+- [x] **Step 2: Confirm the source appears in the Stripe Dashboard**
 
 In the Stripe Dashboard, switch to test mode, open Payments, and find the payment just completed.
 Expected: the payment (or its associated Checkout Session) shows `client_reference_id: ig-story-oct12`.
 
-- [ ] **Step 3: Confirm the `direct` fallback also reaches Stripe**
+- [x] **Step 3: Confirm the `direct` fallback also reaches Stripe**
 
 Repeat the purchase in a private/incognito window, visiting `/tickets` directly with no `?src=` param.
 Expected: the resulting test payment shows `client_reference_id: direct`.

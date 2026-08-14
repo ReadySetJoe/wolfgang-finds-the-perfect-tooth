@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import Ornament from "./Ornament";
 import { TICKETS_PAYMENT_LINK_URL } from "@/lib/site";
-import { captureSource, getSource } from "@/lib/attribution";
+import { resolveSource } from "@/lib/attribution";
 
 export default function Tickets() {
   const [source, setSource] = useState("direct");
 
   useEffect(() => {
-    captureSource();
-    setSource(getSource());
+    // Reading localStorage must happen post-hydration (it doesn't exist on the
+    // server), so this one-shot sync from an external store is intentional.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSource(resolveSource());
   }, []);
 
   const buyTicketsUrl = `${TICKETS_PAYMENT_LINK_URL}?client_reference_id=${encodeURIComponent(source)}`;
