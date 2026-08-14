@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import Ornament from "./Ornament";
 import { TICKETS_PAYMENT_LINK_URL } from "@/lib/site";
-import { getSource } from "@/lib/attribution";
+import { captureSource, getSource } from "@/lib/attribution";
 
 export default function Tickets() {
   const [source, setSource] = useState("direct");
 
   useEffect(() => {
+    captureSource();
     setSource(getSource());
   }, []);
 
