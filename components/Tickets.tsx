@@ -1,7 +1,20 @@
+import { useEffect, useState } from "react";
 import Ornament from "./Ornament";
 import { TICKETS_PAYMENT_LINK_URL } from "@/lib/site";
+import { resolveSource } from "@/lib/attribution";
 
 export default function Tickets() {
+  const [source, setSource] = useState("direct");
+
+  useEffect(() => {
+    // Reading localStorage must happen post-hydration (it doesn't exist on the
+    // server), so this one-shot sync from an external store is intentional.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSource(resolveSource());
+  }, []);
+
+  const buyTicketsUrl = `${TICKETS_PAYMENT_LINK_URL}?client_reference_id=${encodeURIComponent(source)}`;
+
   return (
     <section className="animate-fade-in-up min-h-screen bg-gradient-to-b from-bg-dark via-bg-light to-bg-dark py-24 px-6">
       <div className="mx-auto max-w-xl text-center">
@@ -53,7 +66,7 @@ export default function Tickets() {
         <Ornament />
 
         <a
-          href={TICKETS_PAYMENT_LINK_URL}
+          href={buyTicketsUrl}
           className="inline-block border border-gold text-gold px-9 py-3 text-xs tracking-[0.25em] uppercase font-heading transition-colors duration-300 hover:bg-gold hover:text-bg-dark"
         >
           Buy Tickets
