@@ -6,7 +6,7 @@ export default function TicketsPage() {
   return (
     <>
       <Head>
-        <title>Tickets — Wolfgang Finds the Perfect Tooth</title>
+        <title>Tickets (Sold Out) — Wolfgang Finds the Perfect Tooth</title>
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
