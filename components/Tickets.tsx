@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Ornament from "./Ornament";
 import { TICKETS_PAYMENT_LINK_URL } from "@/lib/site";
 import { resolveSource } from "@/lib/attribution";
@@ -18,6 +19,14 @@ export default function Tickets() {
   return (
     <section className="animate-fade-in-up min-h-screen bg-gradient-to-b from-bg-dark via-bg-light to-bg-dark py-24 px-6">
       <div className="mx-auto max-w-xl text-center">
+        <Image
+          src="/Logo_vA.png"
+          alt="Wolfgang Finds the Perfect Tooth emblem"
+          width={2927}
+          height={3088}
+          className="mx-auto mb-6 h-auto w-20"
+        />
+
         <div className="relative flex items-center justify-center gap-4 mb-8">
           <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold" />
           <span className="text-gold text-[10px] tracking-[0.4em] uppercase text-center">

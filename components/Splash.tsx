@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Ornament from "./Ornament";
 import TicketButton from "./TicketButton";
@@ -7,6 +8,16 @@ export default function Splash() {
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-bg-dark via-bg-light to-bg-dark px-6 py-12 text-center">
       {/* Radial glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(139,0,0,0.15),transparent_70%)]" />
+
+      {/* Logo emblem */}
+      <Image
+        src="/Logo_vA.png"
+        alt="Wolfgang Finds the Perfect Tooth emblem"
+        width={2927}
+        height={3088}
+        className="relative mb-4 h-auto w-24 md:w-28"
+        priority
+      />
 
       {/* Top ornamental line */}
       <div className="relative flex items-center gap-4 mb-6">

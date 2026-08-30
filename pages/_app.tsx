@@ -2,13 +2,14 @@ import "@/styles/globals.css";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
-import { Cinzel } from "next/font/google";
+import { Londrina_Solid } from "next/font/google";
 import { captureSource } from "@/lib/attribution";
 import KonamiEasterEgg from "@/components/KonamiEasterEgg";
 
-const cinzel = Cinzel({
+const londrinaSolid = Londrina_Solid({
   subsets: ["latin"],
-  variable: "--font-cinzel",
+  weight: ["400", "900"],
+  variable: "--font-londrina-solid",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -19,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [router.asPath]);
 
   return (
-    <div className={cinzel.variable}>
+    <div className={londrinaSolid.variable}>
       <Component {...pageProps} />
       <KonamiEasterEgg />
     </div>

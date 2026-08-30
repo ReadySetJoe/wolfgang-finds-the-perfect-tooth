@@ -1,6 +1,6 @@
 export default function Ornament() {
   return (
-    <div className="flex items-center justify-center gap-3 py-8">
+    <div className="flex items-center justify-center gap-3 py-4">
       <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold" />
       <svg
         viewBox="0 0 24 24"

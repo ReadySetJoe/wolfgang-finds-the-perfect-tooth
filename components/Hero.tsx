@@ -1,3 +1,4 @@
+import Image from "next/image";
 import TicketButton from "./TicketButton";
 
 export default function Hero() {
@@ -5,6 +6,16 @@ export default function Hero() {
     <section className="animate-fade-in-up relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-bg-dark via-bg-light to-bg-dark">
       {/* Radial glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(139,0,0,0.15),transparent_70%)]" />
+
+      {/* Logo emblem */}
+      <Image
+        src="/Logo_vA.png"
+        alt="Wolfgang Finds the Perfect Tooth emblem"
+        width={2927}
+        height={3088}
+        className="relative mb-6 h-auto w-32 md:w-40"
+        priority
+      />
 
       {/* Top ornamental line */}
       <div className="relative flex items-center gap-4 mb-8">

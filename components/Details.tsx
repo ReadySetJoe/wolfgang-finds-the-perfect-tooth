@@ -7,7 +7,7 @@ export default function Details() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={ref} className="animate-on-scroll bg-bg-dark py-20 px-6">
+    <section ref={ref} className="animate-on-scroll bg-bg-dark py-14 px-6">
       <Ornament />
       <div className="mx-auto max-w-xl text-center">
         <h2 className="font-heading text-3xl text-gold tracking-wider uppercase mb-12">
