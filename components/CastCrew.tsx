@@ -44,7 +44,11 @@ const characters = [
 ];
 
 const crew = [
+  { name: "Billy Francis", role: "Producer" },
+  { name: "Jake Erwin", role: "Producer" },
+  { name: "Tiff Bunch", role: "Director" },
   { name: "Matthew C. Wallace", role: "Script, Music & Lyrics" },
+  { name: "Alan Hester", role: "Art" },
   { name: "Joe Powers", role: "Helped Out I Guess" },
   { name: "Wolfgang Wallace", role: "Live Band" },
 ];

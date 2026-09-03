@@ -67,7 +67,7 @@ export default function Tickets() {
               Price
             </p>
             <p className="text-lg text-text-primary">
-              $25 &middot; General Admission
+              $22 &middot; General Admission
             </p>
           </div>
         </div>
