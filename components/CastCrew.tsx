@@ -15,7 +15,7 @@ const characters = [
   },
   {
     name: "Wolfman",
-    actor: "Simon Crowe",
+    actor: "Tim Spears",
     description:
       "A vengeful creature seeking revenge for the destruction of the moon and his kind",
   },
@@ -44,7 +44,11 @@ const characters = [
 ];
 
 const crew = [
+  { name: "Billy Francis", role: "Producer" },
+  { name: "Jake Erwin", role: "Producer" },
+  { name: "Tiff Bunch", role: "Director" },
   { name: "Matthew C. Wallace", role: "Script, Music & Lyrics" },
+  { name: "Alan Hester", role: "Art" },
   { name: "Joe Powers", role: "Helped Out I Guess" },
   { name: "Wolfgang Wallace", role: "Live Band" },
 ];
@@ -53,7 +57,7 @@ export default function CastCrew() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={ref} className="animate-on-scroll bg-bg-mid py-20 px-6">
+    <section ref={ref} className="animate-on-scroll bg-bg-mid py-14 px-6">
       <Ornament />
       <div className="mx-auto max-w-3xl">
         <h2 className="font-heading text-3xl text-gold tracking-wider uppercase mb-12 text-center">
@@ -73,7 +77,7 @@ export default function CastCrew() {
           ))}
         </ul>
 
-        <div className="my-16">
+        <div className="my-10">
           <Ornament />
         </div>
 
