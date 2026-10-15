@@ -44,17 +44,11 @@ export default function Tickets() {
 
         <Ornament />
 
-        <p className="text-sm text-text-primary/90 mb-2">
-          Thank you for the love, truly. Every seat is spoken for.
+        <p className="text-sm text-text-primary/90 mt-4">
+          If you&apos;d like to be entered into a ticket lottery for the
+          remaining seats, please contact{" "}
+          <a href="mailto:bagelbobprod@gmail.com">bagelbobprod@gmail.com</a>
         </p>
-        <a
-          href="https://www.instagram.com/wolfgangwallaceband/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-gold tracking-wide hover:text-red-soft transition-colors duration-300"
-        >
-          Follow @wolfgangwallaceband for what&rsquo;s next.
-        </a>
       </div>
     </section>
   );
