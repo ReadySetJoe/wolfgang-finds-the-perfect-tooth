@@ -1,21 +1,7 @@
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Ornament from "./Ornament";
-import { TICKETS_PAYMENT_LINK_URL } from "@/lib/site";
-import { resolveSource } from "@/lib/attribution";
 
 export default function Tickets() {
-  const [source, setSource] = useState("direct");
-
-  useEffect(() => {
-    // Reading localStorage must happen post-hydration (it doesn't exist on the
-    // server), so this one-shot sync from an external store is intentional.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setSource(resolveSource());
-  }, []);
-
-  const buyTicketsUrl = `${TICKETS_PAYMENT_LINK_URL}?client_reference_id=${encodeURIComponent(source)}`;
-
   return (
     <section className="animate-fade-in-up min-h-screen bg-gradient-to-b from-bg-dark via-bg-light to-bg-dark py-24 px-6">
       <div className="mx-auto max-w-xl text-center">
@@ -36,10 +22,11 @@ export default function Tickets() {
         </div>
 
         <h1 className="font-heading text-4xl text-text-primary tracking-wider uppercase mb-4">
-          Get Your Tickets
+          Sold Out
         </h1>
         <p className="text-sm text-red-soft italic mb-12">
-          One night only. Hell doesn&apos;t wait.
+          The tooth has found its audience. We&rsquo;re sorry &mdash; this
+          one&rsquo;s gone.
         </p>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 mb-12">
@@ -62,28 +49,14 @@ export default function Tickets() {
             <p className="text-lg text-text-primary">Centre Stage</p>
             <p className="text-sm text-text-muted mt-1">Greenville, SC</p>
           </div>
-          <div className="sm:col-span-2">
-            <p className="text-xs text-gold tracking-[0.3em] uppercase mb-2">
-              Price
-            </p>
-            <p className="text-lg text-text-primary">
-              $22 &middot; General Admission
-            </p>
-          </div>
         </div>
 
         <Ornament />
 
-        <a
-          href={buyTicketsUrl}
-          className="inline-block border border-gold text-gold px-9 py-3 text-xs tracking-[0.25em] uppercase font-heading transition-colors duration-300 hover:bg-gold hover:text-bg-dark"
-        >
-          Buy Tickets
-        </a>
-
-        <p className="text-xs text-text-muted mt-6">
-          You&apos;ll complete your purchase securely via Stripe, then return
-          here for confirmation.
+        <p className="text-sm text-text-primary/90 mt-4">
+          If you&apos;d like to be entered into a ticket lottery for the
+          remaining seats, please contact{" "}
+          <a href="mailto:bagelbobprod@gmail.com">bagelbobprod@gmail.com</a>
         </p>
       </div>
     </section>
